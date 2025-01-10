@@ -1,0 +1,21 @@
+class Solution {
+    // Function to find the leaders in the array.
+  public:
+    vector<int> leaders(vector<int>& arr) {
+        // Code here
+        int n= arr.size();
+        vector<int> r;
+        int max=arr[n-1];
+        r.push_back(max);
+        for(int i=n-1;i>=0;i--){
+            
+            if(arr[i-1]>=max){
+                max = arr[i-1];
+                r.push_back(max);
+            }
+        }
+        // r.push_back(arr[arr.size()-1]);
+        reverse(r.begin(),r.end());
+        return r;
+    }
+};
