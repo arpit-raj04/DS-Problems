@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> findMissingRepeatingNumbers(vector<int> nums) {
+        sort(nums.begin(),nums.end());
+        int n = nums.size();
+        int rep=-1;
+        int mis=-1;
+        for(int i=0;i<n-1;i++){
+            if(nums[i]==nums[i+1]){
+                rep = nums[i];
+                break;
+            }
+        }
+            int expected = 1;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == expected) {
+                expected++;
+            }
+            else if (nums[i] > expected) {
+                mis = expected;
+                break;
+            }
+        }
+        if (mis == -1) mis = n;
+
+        return {rep, mis};
+
+    }
+};
